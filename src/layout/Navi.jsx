@@ -3,13 +3,16 @@ import { Button, Container, Menu } from "semantic-ui-react";
 import CartSummary from "./CartSummary";
 import SignedOut from "./SignedOut";
 import SingedIn from "./SingedIn";
+import { NavLink,useNavigate } from "react-router-dom";
 
 export default function Navi() {
 
   const [isAut,setIsAut] =useState(true);
   
+  
  function handleSignOut(params) {
     setIsAut(false)
+    
  }
 
  function handleSignIn(params) {
@@ -20,7 +23,7 @@ export default function Navi() {
     <div>
       <Menu inverted fixed="top">
         <Container>
-          <Menu.Item name="home" />
+          <Menu.Item name="home" as={NavLink} to="/"/>
           <Menu.Item name="messages" />
 
           <Menu.Menu position="right">

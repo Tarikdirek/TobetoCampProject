@@ -6,4 +6,8 @@ export default class ProductService{
         return axios.get("http://localhost:8080/api/products/getall");
     }
 
+    getProductByName(productName){
+        return axios.get("http://localhost:8080/api/products/getbyproductname?productName="+productName);
+    }
+
 }
