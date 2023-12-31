@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import { Button, Container, Menu } from "semantic-ui-react";
+import {  Container, Menu } from "semantic-ui-react";
+import { useSelector } from "react-redux";
 import CartSummary from "./CartSummary";
 import SignedOut from "./SignedOut";
 import SingedIn from "./SingedIn";
-import { NavLink,useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function Navi() {
 
   const [isAut,setIsAut] =useState(true);
+  const {cartItems} = useSelector(state => state.cart)
   
   
  function handleSignOut(params) {
@@ -27,7 +29,7 @@ export default function Navi() {
           <Menu.Item name="messages" />
 
           <Menu.Menu position="right">
-                <CartSummary></CartSummary>
+                {cartItems.length>0&&<CartSummary/>}
 
             { isAut ? <SingedIn signOut={handleSignOut}/>:<SignedOut signIn={handleSignIn}/>}
 
